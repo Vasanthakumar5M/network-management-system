@@ -1,0 +1,64 @@
+{
+  "enabled": true,
+  "timezone": "America/New_York",
+  "presets": {
+    "school_hours": {
+      "name": "School Hours",
+      "description": "Block distractions during school hours",
+      "enabled": false,
+      "days": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+      "start_time": "08:00",
+      "end_time": "15:00",
+      "categories_to_block": ["social_media", "gaming", "streaming", "forums"],
+      "allow_list": ["*.google.com", "*.wikipedia.org", "*.khanacademy.org"]
+    },
+    "homework_time": {
+      "name": "Homework Time",
+      "description": "Focus time after school",
+      "enabled": false,
+      "days": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+      "start_time": "16:00",
+      "end_time": "18:00",
+      "categories_to_block": ["social_media", "gaming", "streaming"],
+      "allow_list": ["*.google.com", "*.wikipedia.org"]
+    },
+    "bedtime": {
+      "name": "Bedtime",
+      "description": "Block all entertainment before bed",
+      "enabled": false,
+      "days": ["sunday", "monday", "tuesday", "wednesday", "thursday"],
+      "start_time": "21:00",
+      "end_time": "07:00",
+      "categories_to_block": ["social_media", "gaming", "streaming", "forums", "dating"],
+      "allow_list": []
+    },
+    "weekend_bedtime": {
+      "name": "Weekend Bedtime",
+      "description": "Later bedtime for weekends",
+      "enabled": false,
+      "days": ["friday", "saturday"],
+      "start_time": "23:00",
+      "end_time": "08:00",
+      "categories_to_block": ["social_media", "gaming", "streaming"],
+      "allow_list": []
+    },
+    "family_time": {
+      "name": "Family Time",
+      "description": "Block all non-essential during family time",
+      "enabled": false,
+      "days": ["saturday", "sunday"],
+      "start_time": "17:00",
+      "end_time": "20:00",
+      "categories_to_block": ["social_media", "gaming", "streaming", "forums"],
+      "allow_list": []
+    }
+  },
+  "custom_schedules": [],
+  "device_schedules": {},
+  "override": {
+    "enabled": false,
+    "password_protected": true,
+    "password_hash": "",
+    "max_duration_minutes": 60
+  }
+}

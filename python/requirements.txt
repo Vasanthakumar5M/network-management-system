@@ -1,0 +1,24 @@
+# Network Monitor - Python Dependencies
+
+# Packet capture and network
+scapy>=2.5.0
+netifaces>=0.11.0
+psutil>=5.9.0
+
+# HTTPS proxy
+mitmproxy>=10.0.0
+
+# Web server for certificate installer
+flask>=3.0.0
+flask-cors>=4.0.0
+
+# Cryptography for certificate generation
+cryptography>=41.0.0
+
+# Utilities
+requests>=2.31.0
+python-dateutil>=2.8.0
+
+# Windows-specific
+pywin32>=306;sys_platform=="win32"
+wmi>=1.5.1;sys_platform=="win32"

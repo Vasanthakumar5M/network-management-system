@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+:root {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.dark.800');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.dark.600');
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.dark.500');
+}
+
+/* Utility classes */
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent;
+  }
+
+  .glass {
+    @apply bg-dark-800/80 backdrop-blur-md;
+  }
+
+  .card {
+    @apply bg-dark-800 rounded-xl border border-dark-700;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-200 hover:border-dark-600 hover:shadow-lg;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Status indicators */
+.status-dot {
+  @apply w-2 h-2 rounded-full;
+}
+
+.status-dot.online {
+  @apply bg-green-500;
+}
+
+.status-dot.offline {
+  @apply bg-gray-500;
+}
+
+.status-dot.warning {
+  @apply bg-yellow-500;
+}
+
+.status-dot.error {
+  @apply bg-red-500;
+}
+
+/* Traffic table styles */
+.traffic-row {
+  @apply border-b border-dark-700/50 hover:bg-dark-700/50 transition-colors cursor-pointer;
+}
+
+.traffic-row.selected {
+  @apply bg-primary-900/30 border-primary-700/50;
+}
+
+/* Method badges */
+.method-badge {
+  @apply px-2 py-0.5 rounded text-xs font-medium;
+}
+
+.method-get {
+  @apply bg-green-900/50 text-green-400;
+}
+
+.method-post {
+  @apply bg-blue-900/50 text-blue-400;
+}
+
+.method-put {
+  @apply bg-yellow-900/50 text-yellow-400;
+}
+
+.method-delete {
+  @apply bg-red-900/50 text-red-400;
+}
+
+.method-patch {
+  @apply bg-purple-900/50 text-purple-400;
+}
+
+/* Status code badges */
+.status-badge {
+  @apply px-2 py-0.5 rounded text-xs font-mono;
+}
+
+.status-2xx {
+  @apply bg-green-900/50 text-green-400;
+}
+
+.status-3xx {
+  @apply bg-blue-900/50 text-blue-400;
+}
+
+.status-4xx {
+  @apply bg-yellow-900/50 text-yellow-400;
+}
+
+.status-5xx {
+  @apply bg-red-900/50 text-red-400;
+}

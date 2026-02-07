@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Install Certificate - macOS{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1 class="hero-title">macOS Certificate Installation</h1>
+    <p class="hero-subtitle">Follow these steps to install the security certificate on your Mac</p>
+</div>
+
+<div class="steps-container">
+    <div class="step-card active" id="step-1">
+        <div class="step-header">
+            <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+            </div>
+            <h2>Download and Install</h2>
+        </div>
+        
+        <div class="step-content">
+            <a href="{{ cert_url }}" class="btn btn-primary btn-large" id="download-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download Certificate
+            </a>
+            
+            <ol class="instruction-list">
+                <li>
+                    <div class="instruction-content">
+                        <strong>Open the downloaded file</strong>
+                        <p>Double-click "network-security.pem" in your Downloads folder</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-content">
+                        <strong>Keychain Access will open</strong>
+                        <p>Select "System" keychain and click "Add"</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-content">
+                        <strong>Enter your Mac password</strong>
+                        <p>Authenticate to add the certificate</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-content">
+                        <strong>Trust the certificate</strong>
+                        <p>Double-click the certificate, expand "Trust", and set "When using this certificate" to "Always Trust"</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-content">
+                        <strong>Enter password again</strong>
+                        <p>Confirm the trust settings</p>
+                    </div>
+                </li>
+            </ol>
+            
+            <a href="{{ url_for('install_complete') }}" class="btn btn-success btn-large">
+                I've completed the installation
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,323 @@
+{% extends "base.html" %}
+
+{% block title %}{{ theme_name }} - ChromeOS Installation{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+            </svg>
+            <h1>{{ theme_name }}</h1>
+        </div>
+        <p class="subtitle">{{ theme_subtitle }}</p>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%"></div>
+        </div>
+        <span class="progress-text">Step 1 of 4</span>
+    </div>
+
+    <!-- Device Info -->
+    <div class="device-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+        </svg>
+        <span>Chromebook Detected</span>
+    </div>
+
+    <!-- Important Notice for Managed Chromebooks -->
+    <div class="warning-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <div>
+            <strong>School or Work Chromebook?</strong>
+            <p>If your Chromebook is managed by a school or organization, you may need administrator permission to install certificates. Contact your IT department if you encounter issues.</p>
+        </div>
+    </div>
+
+    <!-- Step 1: Download -->
+    <div class="step-card">
+        <div class="step-header">
+            <span class="step-number">1</span>
+            <h2>Download Security Certificate</h2>
+        </div>
+        <div class="step-content">
+            <p>Click the button below to download the network security certificate.</p>
+            
+            <a href="/download/cert.pem" class="download-btn" data-download="pem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download Certificate
+            </a>
+            
+            <p class="hint">The file will be saved to your Downloads folder</p>
+        </div>
+    </div>
+
+    <!-- Step 2: Open Settings -->
+    <div class="step-card">
+        <div class="step-header">
+            <span class="step-number">2</span>
+            <h2>Open Chrome Settings</h2>
+        </div>
+        <div class="step-content">
+            <p>Open the certificate settings in Chrome:</p>
+            
+            <ol class="instruction-list">
+                <li>Click the <strong>time</strong> in the bottom-right corner</li>
+                <li>Click the <strong>gear icon ⚙️</strong> to open Settings</li>
+                <li>In the left sidebar, click <strong>"Security and Privacy"</strong></li>
+                <li>Scroll down and click <strong>"Security"</strong></li>
+                <li>Click <strong>"Manage certificates"</strong></li>
+            </ol>
+
+            <div class="shortcut-box">
+                <strong>Quick Access:</strong> You can also type <code>chrome://settings/certificates</code> in the Chrome address bar
+            </div>
+
+            <div class="screenshot-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <path d="M21 15l-5-5L5 21"/>
+                </svg>
+                <span>ChromeOS Settings → Security and Privacy</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 3: Import Certificate -->
+    <div class="step-card">
+        <div class="step-header">
+            <span class="step-number">3</span>
+            <h2>Import Certificate</h2>
+        </div>
+        <div class="step-content">
+            <p>In the Certificate Manager:</p>
+            
+            <ol class="instruction-list">
+                <li>Click the <strong>"Authorities"</strong> tab at the top</li>
+                <li>Click <strong>"Import"</strong></li>
+                <li>Navigate to <strong>Downloads</strong> folder</li>
+                <li>Select the certificate file you downloaded</li>
+                <li>Click <strong>"Open"</strong></li>
+            </ol>
+
+            <div class="screenshot-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <path d="M21 15l-5-5L5 21"/>
+                </svg>
+                <span>Certificate Manager - Authorities Tab</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 4: Trust Certificate -->
+    <div class="step-card">
+        <div class="step-header">
+            <span class="step-number">4</span>
+            <h2>Trust the Certificate</h2>
+        </div>
+        <div class="step-content">
+            <p>When prompted, configure trust settings:</p>
+            
+            <ol class="instruction-list">
+                <li>Check <strong>"Trust this certificate for identifying websites"</strong></li>
+                <li>Optionally check "Trust this certificate for identifying email users"</li>
+                <li>Click <strong>"OK"</strong> to confirm</li>
+            </ol>
+
+            <div class="checkbox-visual">
+                <div class="checkbox checked">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                </div>
+                <span>Trust this certificate for identifying websites</span>
+            </div>
+
+            <div class="success-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <div>
+                    <strong>Almost Done!</strong>
+                    <p>Once you click OK, the certificate will be installed and trusted.</p>
+                </div>
+            </div>
+            
+            <a href="/complete" class="btn btn-primary" style="margin-top: 20px;">
+                I've Completed All Steps →
+            </a>
+        </div>
+    </div>
+
+    <!-- Alternative: Using Files App -->
+    <div class="step-card alternative">
+        <div class="step-header">
+            <span class="step-number alt">Alt</span>
+            <h2>Alternative: Using Files App</h2>
+        </div>
+        <div class="step-content">
+            <p>You can also install directly from the Files app:</p>
+            
+            <ol class="instruction-list">
+                <li>Open the <strong>Files</strong> app</li>
+                <li>Go to <strong>Downloads</strong></li>
+                <li>Double-click the certificate file</li>
+                <li>ChromeOS will open the certificate manager automatically</li>
+                <li>Follow steps 3-4 above to complete installation</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Troubleshooting -->
+    <div class="help-section">
+        <h3>Need Help?</h3>
+        <div class="help-grid">
+            <button class="help-btn" data-help="managed-chromebook">
+                Managed Chromebook Issues
+            </button>
+            <button class="help-btn" data-help="import-failed">
+                Import Failed
+            </button>
+            <button class="help-btn" data-help="certificate-not-showing">
+                Certificate Not Showing
+            </button>
+            <button class="help-btn" data-help="contact-support">
+                Contact Support
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+.warning-box {
+    background: #fef3c7;
+    border: 1px solid #f59e0b;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.warning-box svg {
+    width: 24px;
+    height: 24px;
+    color: #d97706;
+    flex-shrink: 0;
+}
+
+.warning-box p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #92400e;
+}
+
+.shortcut-box {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 16px 0;
+}
+
+.shortcut-box code {
+    background: #dcfce7;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #166534;
+}
+
+.checkbox-visual {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 16px 0;
+}
+
+.checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #cbd5e1;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox.checked {
+    background: #3b82f6;
+    border-color: #3b82f6;
+}
+
+.checkbox.checked svg {
+    width: 16px;
+    height: 16px;
+    color: white;
+}
+
+.success-box {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.success-box svg {
+    width: 24px;
+    height: 24px;
+    color: #16a34a;
+    flex-shrink: 0;
+}
+
+.success-box p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #166534;
+}
+
+.step-card.alternative {
+    background: #f8fafc;
+    border-style: dashed;
+}
+
+.step-number.alt {
+    background: #94a3b8;
+}
+
+.instruction-list {
+    padding-left: 24px;
+    line-height: 1.8;
+}
+
+.instruction-list li {
+    margin-bottom: 8px;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,319 @@
+{% extends "base.html" %}
+
+{% block title %}Install Certificate - iOS{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1 class="hero-title">iOS Certificate Installation</h1>
+    <p class="hero-subtitle">Follow these steps to install the security certificate on your iPhone or iPad</p>
+</div>
+
+<div class="progress-bar">
+    <div class="progress-step active" data-step="1">
+        <span class="step-number">1</span>
+        <span class="step-label">Download</span>
+    </div>
+    <div class="progress-step" data-step="2">
+        <span class="step-number">2</span>
+        <span class="step-label">Install Profile</span>
+    </div>
+    <div class="progress-step" data-step="3">
+        <span class="step-number">3</span>
+        <span class="step-label">Trust Certificate</span>
+    </div>
+    <div class="progress-step" data-step="4">
+        <span class="step-number">4</span>
+        <span class="step-label">Complete</span>
+    </div>
+</div>
+
+<div class="steps-container">
+    <!-- Step 1: Download -->
+    <div class="step-card active" id="step-1">
+        <div class="step-header">
+            <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+            </div>
+            <h2>Step 1: Download Certificate</h2>
+        </div>
+        
+        <div class="step-content">
+            <p>Tap the button below to download the security certificate profile.</p>
+            
+            <a href="{{ cert_url }}" class="btn btn-primary btn-large" id="download-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download Certificate
+            </a>
+            
+            <div class="alert alert-info">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>After downloading, you'll see a message saying "Profile Downloaded". Tap <strong>Close</strong> to continue.</span>
+            </div>
+            
+            <button class="btn btn-secondary" onclick="showStep(2)">
+                I've downloaded the profile
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Step 2: Install Profile -->
+    <div class="step-card" id="step-2">
+        <div class="step-header">
+            <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+            </div>
+            <h2>Step 2: Install the Profile</h2>
+        </div>
+        
+        <div class="step-content">
+            <ol class="instruction-list">
+                <li>
+                    <div class="instruction-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        </svg>
+                    </div>
+                    <div class="instruction-content">
+                        <strong>Open Settings</strong>
+                        <p>Go to your iPhone/iPad Settings app</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </div>
+                    <div class="instruction-content">
+                        <strong>Find Profile Downloaded</strong>
+                        <p>You'll see "Profile Downloaded" near the top. Tap on it.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="instruction-content">
+                        <strong>Tap Install</strong>
+                        <p>Tap "Install" in the top right corner</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                    </div>
+                    <div class="instruction-content">
+                        <strong>Enter Passcode</strong>
+                        <p>Enter your device passcode when prompted</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <div class="instruction-content">
+                        <strong>Confirm Install</strong>
+                        <p>Tap "Install" again to confirm, then tap "Done"</p>
+                    </div>
+                </li>
+            </ol>
+            
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="showStep(1)">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back
+                </button>
+                <button class="btn btn-primary" onclick="showStep(3)">
+                    I've installed the profile
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Step 3: Trust Certificate -->
+    <div class="step-card" id="step-3">
+        <div class="step-header">
+            <div class="step-icon warning">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+            </div>
+            <h2>Step 3: Trust the Certificate (Important!)</h2>
+        </div>
+        
+        <div class="step-content">
+            <div class="alert alert-warning">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span><strong>This step is required!</strong> The certificate won't work without enabling trust.</span>
+            </div>
+            
+            <ol class="instruction-list">
+                <li>
+                    <div class="instruction-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        </svg>
+                    </div>
+                    <div class="instruction-content">
+                        <strong>Open Settings > General</strong>
+                        <p>Go to Settings, then tap General</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <div class="instruction-content">
+                        <strong>Tap "About"</strong>
+                        <p>Scroll down and tap "About"</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <div class="instruction-content">
+                        <strong>Tap "Certificate Trust Settings"</strong>
+                        <p>Scroll to the bottom and tap "Certificate Trust Settings"</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                        </svg>
+                    </div>
+                    <div class="instruction-content">
+                        <strong>Enable Trust</strong>
+                        <p>Find "{{ config.company_name }}" and toggle the switch ON</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <div class="instruction-content">
+                        <strong>Tap Continue</strong>
+                        <p>Tap "Continue" to confirm</p>
+                    </div>
+                </li>
+            </ol>
+            
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="showStep(2)">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back
+                </button>
+                <button class="btn btn-primary" onclick="showStep(4)">
+                    I've enabled trust
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Step 4: Complete -->
+    <div class="step-card" id="step-4">
+        <div class="step-header">
+            <div class="step-icon success">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <h2>Installation Complete!</h2>
+        </div>
+        
+        <div class="step-content">
+            <div class="success-message">
+                <div class="success-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h3>You're all set!</h3>
+                <p>The security certificate has been successfully installed on your device. You can now browse securely on this network.</p>
+            </div>
+            
+            <a href="{{ url_for('install_complete') }}" class="btn btn-success btn-large">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Finish Setup
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function showStep(stepNum) {
+    // Hide all steps
+    document.querySelectorAll('.step-card').forEach(card => {
+        card.classList.remove('active');
+    });
+    
+    // Show selected step
+    document.getElementById('step-' + stepNum).classList.add('active');
+    
+    // Update progress bar
+    document.querySelectorAll('.progress-step').forEach(step => {
+        const num = parseInt(step.dataset.step);
+        if (num < stepNum) {
+            step.classList.add('completed');
+            step.classList.remove('active');
+        } else if (num === stepNum) {
+            step.classList.add('active');
+            step.classList.remove('completed');
+        } else {
+            step.classList.remove('active', 'completed');
+        }
+    });
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Track download
+document.getElementById('download-btn').addEventListener('click', function() {
+    setTimeout(function() {
+        showStep(2);
+    }, 1500);
+});
+</script>
+{% endblock %}

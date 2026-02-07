@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Install Certificate{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1 class="hero-title">Certificate Installation</h1>
+    <p class="hero-subtitle">Download and install the security certificate for your device</p>
+</div>
+
+<div class="steps-container">
+    <div class="step-card active">
+        <div class="step-header">
+            <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+            </div>
+            <h2>Download Certificate</h2>
+        </div>
+        
+        <div class="step-content">
+            <p>Download the certificate and follow your device's instructions to install it.</p>
+            
+            <a href="{{ cert_url }}" class="btn btn-primary btn-large">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download Certificate
+            </a>
+            
+            <div class="generic-instructions">
+                <h3>General Instructions:</h3>
+                <ol>
+                    <li>Download the certificate file</li>
+                    <li>Open your device's security or certificate settings</li>
+                    <li>Install the certificate as a trusted CA certificate</li>
+                    <li>Trust the certificate for web browsing</li>
+                </ol>
+            </div>
+            
+            <a href="{{ url_for('install_complete') }}" class="btn btn-success">
+                I've installed the certificate
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

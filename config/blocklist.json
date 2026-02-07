@@ -1,0 +1,81 @@
+{
+  "enabled": true,
+  "default_action": "allow",
+  "log_blocked": true,
+  "show_block_page": true,
+  "block_page_message": "This website is not available.",
+  "categories": {
+    "adult": {
+      "enabled": true,
+      "action": "block"
+    },
+    "gambling": {
+      "enabled": true,
+      "action": "block"
+    },
+    "social_media": {
+      "enabled": false,
+      "action": "block"
+    },
+    "gaming": {
+      "enabled": false,
+      "action": "block"
+    },
+    "streaming": {
+      "enabled": false,
+      "action": "block"
+    },
+    "vpn_proxy": {
+      "enabled": true,
+      "action": "block"
+    },
+    "malware": {
+      "enabled": true,
+      "action": "block"
+    },
+    "phishing": {
+      "enabled": true,
+      "action": "block"
+    },
+    "drugs": {
+      "enabled": true,
+      "action": "block"
+    },
+    "violence": {
+      "enabled": true,
+      "action": "block"
+    },
+    "weapons": {
+      "enabled": true,
+      "action": "block"
+    },
+    "dating": {
+      "enabled": false,
+      "action": "block"
+    },
+    "forums": {
+      "enabled": false,
+      "action": "block"
+    },
+    "shopping": {
+      "enabled": false,
+      "action": "block"
+    },
+    "news": {
+      "enabled": false,
+      "action": "block"
+    },
+    "search_engines": {
+      "enabled": false,
+      "action": "block"
+    }
+  },
+  "custom_blocklist": [],
+  "custom_allowlist": [
+    "*.google.com",
+    "*.microsoft.com",
+    "*.apple.com",
+    "*.wikipedia.org"
+  ],
+  "device_rules": []
+}

@@ -1,0 +1,174 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-01-01",
+  "categories": {
+    "self_harm": {
+      "enabled": true,
+      "severity": "critical",
+      "keywords": [
+        "cut myself",
+        "cutting myself",
+        "self harm",
+        "self-harm",
+        "hurt myself",
+        "hurting myself",
+        "burn myself",
+        "starve myself",
+        "anorexia tips",
+        "pro ana",
+        "thinspo",
+        "purging tips",
+        "how to purge",
+        "razor blade",
+        "blade to skin"
+      ],
+      "patterns": [
+        "want(s)? to (hurt|cut|burn) (myself|yourself|themselves)",
+        "ways? to (hurt|harm) (myself|yourself)",
+        "how (do|can) (i|you) (cut|hurt|harm)"
+      ]
+    },
+    "suicide": {
+      "enabled": true,
+      "severity": "critical",
+      "keywords": [
+        "kill myself",
+        "killing myself",
+        "end my life",
+        "want to die",
+        "suicide",
+        "suicidal",
+        "suicide methods",
+        "painless death",
+        "overdose pills",
+        "hang myself",
+        "jump off",
+        "no reason to live",
+        "better off dead",
+        "goodbye letter",
+        "final goodbye"
+      ],
+      "patterns": [
+        "how (to|do i|can i) (kill|end) (myself|my life)",
+        "want(s)? to (die|end it all|commit suicide)",
+        "(think|thinking) about (suicide|killing myself|ending it)"
+      ]
+    },
+    "predator_grooming": {
+      "enabled": true,
+      "severity": "critical",
+      "keywords": [
+        "dont tell your parents",
+        "don't tell your parents",
+        "our little secret",
+        "keep this between us",
+        "secret relationship",
+        "meet in person",
+        "come meet me",
+        "pick you up",
+        "send me pictures",
+        "send pics",
+        "video chat alone",
+        "are you home alone",
+        "parents not home",
+        "how old are you really",
+        "mature for your age"
+      ],
+      "patterns": [
+        "(don'?t|do not) tell (your|anyone|parents|mom|dad)",
+        "(our|this is our|keep this) (little)? ?secret",
+        "(send|show) (me|us) (a )?(pic|picture|photo|video)",
+        "(are|when are) (your )?(parents|mom|dad) (home|away|gone)"
+      ]
+    },
+    "bullying": {
+      "enabled": true,
+      "severity": "high",
+      "keywords": [
+        "kill yourself",
+        "kys",
+        "go die",
+        "nobody likes you",
+        "everyone hates you",
+        "worthless",
+        "you're ugly",
+        "you're fat",
+        "you're stupid",
+        "loser",
+        "freak",
+        "weirdo",
+        "no friends",
+        "should be dead"
+      ],
+      "patterns": [
+        "(you should|why don'?t you) (just )?(die|kill yourself|kys)",
+        "(everyone|nobody) (hates|likes) you",
+        "you'?re (so|such a) (ugly|fat|stupid|worthless|pathetic)"
+      ]
+    },
+    "drugs": {
+      "enabled": true,
+      "severity": "high",
+      "keywords": [
+        "buy weed",
+        "buy molly",
+        "buy pills",
+        "drug dealer",
+        "plug for",
+        "score some",
+        "get high",
+        "getting high",
+        "xanax bars",
+        "percocet",
+        "lean drink",
+        "purple drank",
+        "edibles",
+        "vape cart",
+        "dab pen"
+      ],
+      "patterns": [
+        "(where|how) (to|can i) (buy|get|find|score) (weed|drugs|pills|xans|molly|acid|shrooms)",
+        "(anyone|who) (got|has|selling|sell) (weed|drugs|pills)",
+        "(looking|need) (a )?plug (for)?"
+      ]
+    },
+    "violence": {
+      "enabled": true,
+      "severity": "high",
+      "keywords": [
+        "kill everyone",
+        "shoot up",
+        "school shooting",
+        "bomb threat",
+        "make a bomb",
+        "hurt people",
+        "murder",
+        "how to fight",
+        "beat them up",
+        "revenge plan"
+      ],
+      "patterns": [
+        "(going to|gonna|want to) (kill|hurt|shoot|stab) (everyone|people|them|him|her)",
+        "how (to|do i) (make|build) (a )?(bomb|weapon)",
+        "(planning|plan) (a )?(attack|shooting|revenge)"
+      ]
+    }
+  },
+  "custom_keywords": [],
+  "fuzzy_matching": {
+    "enabled": true,
+    "threshold": 0.85
+  },
+  "leetspeak_detection": {
+    "enabled": true,
+    "substitutions": {
+      "a": ["4", "@"],
+      "e": ["3"],
+      "i": ["1", "!"],
+      "o": ["0"],
+      "s": ["5", "$"],
+      "t": ["7"],
+      "l": ["1"]
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "enabled": true,
+  "severity_levels": {
+    "critical": {
+      "enabled": true,
+      "sound": true,
+      "desktop_notification": true,
+      "email": true,
+      "log": true
+    },
+    "high": {
+      "enabled": true,
+      "sound": true,
+      "desktop_notification": true,
+      "email": false,
+      "log": true
+    },
+    "medium": {
+      "enabled": true,
+      "sound": false,
+      "desktop_notification": true,
+      "email": false,
+      "log": true
+    },
+    "low": {
+      "enabled": true,
+      "sound": false,
+      "desktop_notification": false,
+      "email": false,
+      "log": true
+    }
+  },
+  "categories": {
+    "self_harm": {
+      "enabled": true,
+      "severity": "critical"
+    },
+    "suicide": {
+      "enabled": true,
+      "severity": "critical"
+    },
+    "predator_grooming": {
+      "enabled": true,
+      "severity": "critical"
+    },
+    "bullying": {
+      "enabled": true,
+      "severity": "high"
+    },
+    "drugs": {
+      "enabled": true,
+      "severity": "high"
+    },
+    "violence": {
+      "enabled": true,
+      "severity": "high"
+    },
+    "adult_content": {
+      "enabled": true,
+      "severity": "medium"
+    },
+    "profanity": {
+      "enabled": false,
+      "severity": "low"
+    }
+  },
+  "quiet_hours": {
+    "enabled": false,
+    "start": "22:00",
+    "end": "07:00",
+    "suppress_sound": true,
+    "suppress_desktop": false,
+    "suppress_email": true
+  },
+  "rate_limiting": {
+    "enabled": true,
+    "max_alerts_per_minute": 10,
+    "cooldown_seconds": 60,
+    "group_similar": true
+  },
+  "email": {
+    "enabled": false,
+    "smtp_server": "",
+    "smtp_port": 587,
+    "use_tls": true,
+    "username": "",
+    "password": "",
+    "from_address": "",
+    "to_addresses": []
+  },
+  "webhook": {
+    "enabled": false,
+    "url": "",
+    "method": "POST",
+    "headers": {},
+    "include_content": false
+  },
+  "alert_retention_days": 365
+}

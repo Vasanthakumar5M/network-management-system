@@ -1,0 +1,87 @@
+{
+  "desktop": {
+    "enabled": true,
+    "position": "bottom-right",
+    "duration_seconds": 5,
+    "show_content_preview": false,
+    "group_notifications": true,
+    "max_visible": 3,
+    "click_action": "open_app"
+  },
+  "sound": {
+    "enabled": true,
+    "volume": 0.7,
+    "sounds": {
+      "critical": "critical.wav",
+      "high": "alert.wav",
+      "medium": "notification.wav",
+      "low": "soft.wav"
+    },
+    "custom_sound_path": null
+  },
+  "email": {
+    "enabled": false,
+    "smtp_server": "",
+    "smtp_port": 587,
+    "use_ssl": false,
+    "use_tls": true,
+    "username": "",
+    "password": "",
+    "from_address": "",
+    "from_name": "Network Monitor",
+    "to_addresses": [],
+    "subject_prefix": "[Alert]",
+    "include_screenshot": false,
+    "batch_emails": true,
+    "batch_interval_minutes": 15,
+    "min_severity_for_email": "high"
+  },
+  "webhook": {
+    "enabled": false,
+    "url": "",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "auth_type": "none",
+    "auth_token": "",
+    "include_raw_content": false,
+    "retry_count": 3,
+    "retry_delay_seconds": 5
+  },
+  "sms": {
+    "enabled": false,
+    "provider": "twilio",
+    "account_sid": "",
+    "auth_token": "",
+    "from_number": "",
+    "to_numbers": [],
+    "min_severity_for_sms": "critical"
+  },
+  "pushover": {
+    "enabled": false,
+    "user_key": "",
+    "api_token": "",
+    "priority_mapping": {
+      "critical": 2,
+      "high": 1,
+      "medium": 0,
+      "low": -1
+    }
+  },
+  "telegram": {
+    "enabled": false,
+    "bot_token": "",
+    "chat_ids": [],
+    "min_severity": "high"
+  },
+  "summary": {
+    "enabled": true,
+    "frequency": "daily",
+    "time": "08:00",
+    "include_blocked_sites": true,
+    "include_alerts": true,
+    "include_device_activity": true,
+    "delivery_method": "email"
+  }
+}

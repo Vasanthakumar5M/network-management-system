@@ -1,0 +1,26 @@
+# Certificate Installer - Flask Dependencies
+# Install with: pip install -r requirements.txt
+
+Flask>=2.3.0
+Werkzeug>=2.3.0
+Jinja2>=3.1.0
+MarkupSafe>=2.1.0
+itsdangerous>=2.1.0
+click>=8.1.0
+
+# Production WSGI server
+gunicorn>=21.0.0;platform_system!="Windows"
+waitress>=2.1.0;platform_system=="Windows"
+
+# For generating QR codes (optional, for mobile setup)
+qrcode>=7.4.0
+Pillow>=10.0.0
+
+# For HTTPS support (optional, for production)
+pyOpenSSL>=23.0.0
+
+# For rate limiting (optional)
+Flask-Limiter>=3.5.0
+
+# For better logging
+python-json-logger>=2.0.0

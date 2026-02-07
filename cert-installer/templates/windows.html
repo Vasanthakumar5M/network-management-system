@@ -1,0 +1,257 @@
+{% extends "base.html" %}
+
+{% block title %}Install Certificate - Windows{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1 class="hero-title">Windows Certificate Installation</h1>
+    <p class="hero-subtitle">Follow these steps to install the security certificate on your Windows PC</p>
+</div>
+
+<div class="progress-bar">
+    <div class="progress-step active" data-step="1">
+        <span class="step-number">1</span>
+        <span class="step-label">Download</span>
+    </div>
+    <div class="progress-step" data-step="2">
+        <span class="step-number">2</span>
+        <span class="step-label">Open File</span>
+    </div>
+    <div class="progress-step" data-step="3">
+        <span class="step-number">3</span>
+        <span class="step-label">Install</span>
+    </div>
+    <div class="progress-step" data-step="4">
+        <span class="step-number">4</span>
+        <span class="step-label">Complete</span>
+    </div>
+</div>
+
+<div class="steps-container">
+    <!-- Step 1: Download -->
+    <div class="step-card active" id="step-1">
+        <div class="step-header">
+            <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+            </div>
+            <h2>Step 1: Download Certificate</h2>
+        </div>
+        
+        <div class="step-content">
+            <p>Click the button below to download the security certificate.</p>
+            
+            <a href="{{ cert_url }}" class="btn btn-primary btn-large" id="download-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download Certificate
+            </a>
+            
+            <div class="alert alert-info">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>The file will be saved to your Downloads folder as "network-security.cer"</span>
+            </div>
+            
+            <button class="btn btn-secondary" onclick="showStep(2)">
+                I've downloaded the certificate
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Step 2: Open File -->
+    <div class="step-card" id="step-2">
+        <div class="step-header">
+            <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+                </svg>
+            </div>
+            <h2>Step 2: Open the Certificate File</h2>
+        </div>
+        
+        <div class="step-content">
+            <ol class="instruction-list">
+                <li>
+                    <div class="instruction-content">
+                        <strong>Open File Explorer</strong>
+                        <p>Press Win+E or click the folder icon on your taskbar</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-content">
+                        <strong>Go to Downloads folder</strong>
+                        <p>Click "Downloads" in the left sidebar</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-content">
+                        <strong>Double-click "network-security.cer"</strong>
+                        <p>This will open the certificate installer</p>
+                    </div>
+                </li>
+            </ol>
+            
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="showStep(1)">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back
+                </button>
+                <button class="btn btn-primary" onclick="showStep(3)">
+                    I've opened the file
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Step 3: Install -->
+    <div class="step-card" id="step-3">
+        <div class="step-header">
+            <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+            </div>
+            <h2>Step 3: Install the Certificate</h2>
+        </div>
+        
+        <div class="step-content">
+            <ol class="instruction-list">
+                <li>
+                    <div class="instruction-content">
+                        <strong>Click "Install Certificate..."</strong>
+                        <p>In the certificate dialog, click the "Install Certificate" button</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-content">
+                        <strong>Select "Local Machine"</strong>
+                        <p>Choose "Local Machine" and click Next (you may need admin rights)</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-content">
+                        <strong>Click "Yes" on UAC prompt</strong>
+                        <p>If Windows asks for permission, click Yes</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-content">
+                        <strong>Select "Place all certificates in the following store"</strong>
+                        <p>Click Browse and select "Trusted Root Certification Authorities"</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-content">
+                        <strong>Click Next, then Finish</strong>
+                        <p>Complete the wizard</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="instruction-content">
+                        <strong>Click "Yes" on the security warning</strong>
+                        <p>Confirm that you want to install the certificate</p>
+                    </div>
+                </li>
+            </ol>
+            
+            <div class="alert alert-success">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>You should see "The import was successful" message</span>
+            </div>
+            
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="showStep(2)">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back
+                </button>
+                <button class="btn btn-primary" onclick="showStep(4)">
+                    I've installed it
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Step 4: Complete -->
+    <div class="step-card" id="step-4">
+        <div class="step-header">
+            <div class="step-icon success">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <h2>Installation Complete!</h2>
+        </div>
+        
+        <div class="step-content">
+            <div class="success-message">
+                <div class="success-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h3>You're all set!</h3>
+                <p>The security certificate has been successfully installed on your Windows PC.</p>
+                <p class="note">You may need to restart your browser for changes to take effect.</p>
+            </div>
+            
+            <a href="{{ url_for('install_complete') }}" class="btn btn-success btn-large">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Finish Setup
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function showStep(stepNum) {
+    document.querySelectorAll('.step-card').forEach(card => {
+        card.classList.remove('active');
+    });
+    document.getElementById('step-' + stepNum).classList.add('active');
+    
+    document.querySelectorAll('.progress-step').forEach(step => {
+        const num = parseInt(step.dataset.step);
+        if (num < stepNum) {
+            step.classList.add('completed');
+            step.classList.remove('active');
+        } else if (num === stepNum) {
+            step.classList.add('active');
+            step.classList.remove('completed');
+        } else {
+            step.classList.remove('active', 'completed');
+        }
+    });
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.getElementById('download-btn').addEventListener('click', function() {
+    setTimeout(function() {
+        showStep(2);
+    }, 1500);
+});
+</script>
+{% endblock %}
