@@ -225,3 +225,86 @@ def ping(host: str, timeout: int = 1) -> bool:
         return result.returncode == 0
     except Exception:
         return False
+
+
+def output_json(data: dict) -> None:
+    """Output data as JSON to stdout for Tauri IPC."""
+    import json
+    print(json.dumps(data, default=str), flush=True)
+
+
+def main():
+    """CLI entry point for network utilities."""
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="Network utilities")
+    parser.add_argument("--action", choices=[
+        "get-ip", "list-interfaces", "get-gateway", "get-mac", "get-range", "is-admin"
+    ], default="list-interfaces", help="Action to perform")
+    parser.add_argument("--interface", help="Network interface name")
+    
+    args = parser.parse_args()
+    
+    try:
+        if args.action == "get-ip":
+            ip = get_local_ip(args.interface)
+            output_json({
+                "success": True,
+                "ip": ip,
+                "interface": args.interface
+            })
+        
+        elif args.action == "list-interfaces":
+            interfaces = get_interfaces()
+            # Mark default interface
+            default_ip = get_local_ip()
+            for iface in interfaces:
+                iface["is_default"] = iface.get("ip") == default_ip
+            
+            output_json({
+                "success": True,
+                "interfaces": interfaces,
+                "count": len(interfaces)
+            })
+        
+        elif args.action == "get-gateway":
+            gateway_ip = get_gateway_ip()
+            gateway_mac = get_gateway_mac(gateway_ip)
+            output_json({
+                "success": True,
+                "gateway_ip": gateway_ip,
+                "gateway_mac": gateway_mac
+            })
+        
+        elif args.action == "get-mac":
+            mac = get_mac_address(args.interface)
+            output_json({
+                "success": True,
+                "mac": mac,
+                "interface": args.interface
+            })
+        
+        elif args.action == "get-range":
+            net_range = get_network_range(args.interface)
+            output_json({
+                "success": True,
+                "range": net_range
+            })
+        
+        elif args.action == "is-admin":
+            admin = is_admin()
+            output_json({
+                "success": True,
+                "is_admin": admin
+            })
+    
+    except Exception as e:
+        output_json({
+            "success": False,
+            "error": str(e),
+            "type": type(e).__name__
+        })
+
+
+if __name__ == "__main__":
+    main()

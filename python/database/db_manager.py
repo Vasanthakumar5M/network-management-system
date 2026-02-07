@@ -654,13 +654,18 @@ def main():
     
     parser = argparse.ArgumentParser(description="Database management")
     parser.add_argument("--action", choices=[
-        "stats", "search", "cleanup", "devices", "traffic", "dns"
+        "stats", "search", "cleanup", "devices", "traffic", "dns",
+        "get-traffic", "update-device", "export"
     ], default="stats", help="Action to perform")
     parser.add_argument("--query", help="Search query")
     parser.add_argument("--device", help="Device ID filter")
+    parser.add_argument("--id", help="Entry ID for get operations")
+    parser.add_argument("--monitored", help="Set monitored status (0 or 1)")
     parser.add_argument("--host", help="Host filter")
     parser.add_argument("--days", type=int, default=30, help="Cleanup days")
     parser.add_argument("--limit", type=int, default=100, help="Result limit")
+    parser.add_argument("--format", choices=["json", "csv"], default="json", help="Export format")
+    parser.add_argument("--output", help="Output file path for export")
     
     args = parser.parse_args()
     
@@ -717,6 +722,78 @@ def main():
                 "success": True,
                 "count": len(queries),
                 "queries": [q.to_dict() for q in queries]
+            })
+        
+        elif args.action == "get-traffic":
+            if not args.id:
+                output_json({"success": False, "error": "No entry ID specified"})
+                return
+            
+            entry = db.get_traffic_entry(args.id)
+            if entry:
+                output_json({
+                    "success": True,
+                    "traffic": [entry.to_dict()]
+                })
+            else:
+                output_json({"success": False, "error": f"Traffic entry not found: {args.id}"})
+        
+        elif args.action == "update-device":
+            if not args.device:
+                output_json({"success": False, "error": "No device ID specified"})
+                return
+            
+            device = db.get_device(args.device)
+            if not device:
+                output_json({"success": False, "error": f"Device not found: {args.device}"})
+                return
+            
+            # Update monitored status if specified
+            if args.monitored is not None:
+                device.is_monitored = args.monitored == "1"
+            
+            db.add_device(device)
+            output_json({"success": True, "action": "updated", "device_id": args.device})
+        
+        elif args.action == "export":
+            if not args.output:
+                output_json({"success": False, "error": "No output path specified"})
+                return
+            
+            # Export based on format
+            stats = db.get_stats()
+            devices = db.list_devices()
+            traffic = db.get_traffic(limit=10000)
+            
+            export_data = {
+                "export_date": datetime.now().isoformat(),
+                "stats": stats,
+                "devices": [d.to_dict() for d in devices],
+                "traffic": [t.to_dict() for t in traffic]
+            }
+            
+            output_path = Path(args.output)
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            
+            if args.format == "json":
+                with open(output_path, "w") as f:
+                    json.dump(export_data, f, indent=2, default=str)
+            elif args.format == "csv":
+                import csv
+                # Export traffic as CSV
+                with open(output_path, "w", newline="") as f:
+                    if traffic:
+                        writer = csv.DictWriter(f, fieldnames=traffic[0].to_dict().keys())
+                        writer.writeheader()
+                        for entry in traffic:
+                            writer.writerow(entry.to_dict())
+            
+            output_json({
+                "success": True,
+                "action": "exported",
+                "path": str(output_path),
+                "format": args.format,
+                "records": len(traffic)
             })
     
     except Exception as e:

@@ -583,17 +583,21 @@ def main():
     
     parser = argparse.ArgumentParser(description="Alert engine")
     parser.add_argument("--action", choices=[
-        "stats", "list", "process", "acknowledge", "unacknowledged"
+        "stats", "list", "process", "acknowledge", "acknowledge-all", "delete", "unacknowledged"
     ], default="stats", help="Action to perform")
     parser.add_argument("--content", help="Content to process")
     parser.add_argument("--url", help="URL to process")
     parser.add_argument("--domain", help="Domain")
-    parser.add_argument("--alert-id", help="Alert ID to acknowledge")
+    parser.add_argument("--id", dest="alert_id", help="Alert ID to acknowledge/delete")
+    parser.add_argument("--alert-id", dest="alert_id_legacy", help="Alert ID (legacy)")
     parser.add_argument("--severity", help="Filter by severity")
     parser.add_argument("--category", help="Filter by category")
     parser.add_argument("--limit", type=int, default=100, help="Max results")
     
     args = parser.parse_args()
+    
+    # Support both --id and --alert-id
+    alert_id = args.alert_id or args.alert_id_legacy
     
     engine = AlertEngine()
     
@@ -639,12 +643,38 @@ def main():
             })
         
         elif args.action == "acknowledge":
-            if not args.alert_id:
+            if not alert_id:
                 output_json({"success": False, "error": "No alert ID specified"})
                 return
             
-            success = engine.acknowledge_alert(args.alert_id)
-            output_json({"success": success, "action": "acknowledged", "id": args.alert_id})
+            success = engine.acknowledge_alert(alert_id)
+            output_json({"success": success, "action": "acknowledged", "id": alert_id})
+        
+        elif args.action == "acknowledge-all":
+            # Acknowledge all unacknowledged alerts
+            count = 0
+            for alert in engine.alerts:
+                if not alert.acknowledged:
+                    alert.acknowledged = True
+                    alert.acknowledged_at = datetime.now().isoformat()
+                    count += 1
+            engine._save_alerts()
+            output_json({"success": True, "action": "acknowledged-all", "count": count})
+        
+        elif args.action == "delete":
+            if not alert_id:
+                output_json({"success": False, "error": "No alert ID specified"})
+                return
+            
+            # Find and remove the alert
+            original_len = len(engine.alerts)
+            engine.alerts = [a for a in engine.alerts if a.id != alert_id]
+            
+            if len(engine.alerts) < original_len:
+                engine._save_alerts()
+                output_json({"success": True, "action": "deleted", "id": alert_id})
+            else:
+                output_json({"success": False, "error": f"Alert not found: {alert_id}"})
         
         elif args.action == "unacknowledged":
             output_json({
